@@ -44,7 +44,7 @@ export default function App(): ReactElement {
 				isLoading: false
 			}))
 		} catch (error_) {
-			// console.error('Failed to get token:', error_)
+			console.error('Failed to get token:', error_)
 			setState(previous => ({
 				...previous,
 				error: error_ instanceof Error ? error_.message : 'Failed to get token',
