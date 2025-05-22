@@ -6,10 +6,10 @@ import { VitePWA } from 'vite-plugin-pwa'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig(({ mode }) => ({
-	 server: {
-    port: 80,
-    host: 'localhost'
-  },
+	server: {
+		port: 80,
+		host: 'localhost'
+	},
 	plugins: [
 		tsconfigPaths(),
 		react(),
@@ -43,6 +43,6 @@ export default defineConfig(({ mode }) => ({
 							]
 						}
 					})
-			  ])
+				])
 	]
 }))

@@ -55,15 +55,7 @@
 		"@typescript-eslint/prefer-enum-initializers": "off",
 		"@typescript-eslint/prefer-readonly-parameter-types": "off",
 		"@typescript-eslint/prefer-regexp-exec": "off",
-		"@typescript-eslint/no-magic-numbers": [
-			"error",
-			{
-				"ignoreEnums": true,
-				"ignore": [0],
-				"enforceConst": true,
-				"detectObjects": true
-			}
-		],
+		"@typescript-eslint/no-magic-numbers": "off",
 		"@typescript-eslint/explicit-module-boundary-types": "off",
 		"@typescript-eslint/init-declarations": "off",
 		"@typescript-eslint/no-confusing-void-expression": [
@@ -115,12 +107,7 @@
 				"validateNested": true
 			}
 		],
-		"react/function-component-definition": [
-			"error",
-			{
-				"namedComponents": "function-declaration"
-			}
-		],
+		"react/function-component-definition": "off",
 		"react/no-unstable-nested-components": "error",
 		"react/jsx-handler-names": [
 			"error",

@@ -1,50 +1,47 @@
-import * as VKID from '@vkid/sdk';
-import { APP_ID, REDIRECT_URL } from 'env'
-import { AuthResponse, LoginResult } from 'types'
+import * as VKID from '@vkid/sdk'
+import { APP_ID, REDIRECT_URL } from 'environment'
+import type { AuthResponse, LoginResult } from 'types'
 import { generateRandomString } from 'utils'
 
-
-
-
-
-export const STATE = generateRandomString(16);
-export const CODE_VERIFIER = generateRandomString(43);
-
+export const STATE = generateRandomString(16)
+export const CODE_VERIFIER = generateRandomString(43)
 
 export const initVKAuth = (): void => {
-  VKID.Config.init({
-    app: APP_ID,
-    redirectUrl: REDIRECT_URL,
-    state: STATE,
-    codeVerifier: CODE_VERIFIER,
-    scope: "email",
-    responseMode: VKID.ConfigResponseMode.Redirect,
-    mode: VKID.ConfigAuthMode.Redirect
-  });
-};
+	VKID.Config.init({
+		app: APP_ID,
+		redirectUrl: REDIRECT_URL,
+		state: STATE,
+		codeVerifier: CODE_VERIFIER,
+		scope: 'email',
+		responseMode: VKID.ConfigResponseMode.Redirect,
+		mode: VKID.ConfigAuthMode.Redirect
+	})
+}
 
 export const loginWithVK = (): void => {
-  VKID.Auth.login();
-};
+	void VKID.Auth.login()
+}
 
-export const exchangeAuthCode = async (loginData: LoginResult): Promise<AuthResponse> => {
-  console.log(CODE_VERIFIER)
-  return VKID.Auth.exchangeCode(
-    loginData.code,
-    loginData.device_id,
-    // CODE_VERIFIER
-  );
-};
+export const exchangeAuthCode = async (
+	loginData: LoginResult
+): Promise<AuthResponse> => 
+	// console.log(CODE_VERIFIER)
+	 VKID.Auth.exchangeCode(
+		loginData.code,
+		loginData.deviceId
+		// CODE_VERIFIER
+	)
 
-export const getAuthParamsFromURL = (): LoginResult | undefined => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const code = urlParams.get('code');
-  const device_id = urlParams.get('device_id');
-  const state = urlParams.get('state');
-  
-  if (code && device_id && state) {
-    return { code, device_id, state };
-  }
-  
-  return undefined;
-};
+
+export const getAuthParametersFromURL = (): LoginResult | undefined => {
+	const urlParameters = new URLSearchParams(window.location.search)
+	const code = urlParameters.get('code')
+	const deviceId = urlParameters.get('device_id')
+	const state = urlParameters.get('state')
+
+	if (code && deviceId && state) {
+		return { code, deviceId, state }
+	}
+
+	return undefined
+}
