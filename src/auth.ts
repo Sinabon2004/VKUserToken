@@ -14,7 +14,7 @@ export const initVKAuth = (): void => {
 		// codeVerifier: CODE_VERIFIER,
 		scope: 'email',
 		responseMode: VKID.ConfigResponseMode.Redirect,
-		mode: VKID.ConfigAuthMode.Redirect
+		mode: VKID.ConfigAuthMode.InNewTab
 	})
 }
 
@@ -24,15 +24,14 @@ export const loginWithVK = (): void => {
 
 export const exchangeAuthCode = async (
 	loginData: LoginResult
-): Promise<AuthResponse> => 
+): Promise<AuthResponse> =>
 	// console.log(CODE_VERIFIER)
-	 VKID.Auth.exchangeCode(
+	VKID.Auth.exchangeCode(
 		loginData.code,
-		loginData.deviceId,
+		loginData.deviceId
 		// loginData.state
 		// CODE_VERIFIER
 	)
-
 
 export const getAuthParametersFromURL = (): LoginResult | undefined => {
 	const urlParameters = new URLSearchParams(window.location.search)
