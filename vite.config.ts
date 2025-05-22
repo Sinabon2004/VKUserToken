@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => ({
 	// 	port: 80,
 	// 	host: 'localhost'
 	// },
+	base: "/VKUserToken/",
 	plugins: [
 		tsconfigPaths(),
 		react(),
