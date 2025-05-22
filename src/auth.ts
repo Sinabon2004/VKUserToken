@@ -11,7 +11,7 @@ export const initVKAuth = (): void => {
 		app: APP_ID,
 		redirectUrl: REDIRECT_URL,
 		state: STATE,
-		codeVerifier: CODE_VERIFIER,
+		// codeVerifier: CODE_VERIFIER,
 		scope: 'email',
 		responseMode: VKID.ConfigResponseMode.Redirect,
 		mode: VKID.ConfigAuthMode.Redirect
@@ -28,7 +28,8 @@ export const exchangeAuthCode = async (
 	// console.log(CODE_VERIFIER)
 	 VKID.Auth.exchangeCode(
 		loginData.code,
-		loginData.deviceId
+		loginData.deviceId,
+		// loginData.state
 		// CODE_VERIFIER
 	)
 
