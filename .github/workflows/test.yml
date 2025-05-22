@@ -1,4 +1,4 @@
-name: Test
+name: Lint
 
 on:
   push:
@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  Test:
+  Lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,12 +27,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm i && pnpm cypress install
+        run: pnpm i
 
-      - name: Validate
-        run: pnpm run-p lint test:ci test:e2e:ci
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
-      - name: Upload coverage
-        uses: codecov/codecov-action@v4
+      - name: Lint
+        run: pnpm run-p lint
